@@ -10,9 +10,9 @@ function HomeLayout() {
         <>
             <IconContext.Provider value={{ color: '#fff' }}>
                 <div className="navbar">
-                    <Link to="#" className="logo">
-                        Zillow
-                    </Link>
+                    <div className="logo">
+                        NJAN
+                    </div>
                     <Link to="main" className="account-tab">
                         <FaIcons.FaUserCircle />
                     </Link>

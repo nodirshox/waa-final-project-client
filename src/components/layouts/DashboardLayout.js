@@ -39,8 +39,9 @@ function DashboardLayout() {
                             )
                         })}
                     </ul>
-                    <Outlet />
+
                 </nav>
+                <Outlet />
             </IconContext.Provider>
         </>
     )
