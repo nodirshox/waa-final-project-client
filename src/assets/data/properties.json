@@ -1,0 +1,23 @@
+{
+    "count": 10,
+    "data": [
+        {
+            "id": 1,
+            "price": 230000,
+            "bedroom": 3,
+            "area": 120,
+            "address": "1962 170th St, Fairfield, IA 52556",
+            "image": "https://photos.zillowstatic.com/fp/80ce9b65189dcb034c4ac9b3b2378969-p_e.jpg"
+        },
+        {
+            "id": 2,
+            "price": 270000,
+            "bedroom": 4,
+            "area": 120,
+            "address": "1962 170th St, Fairfield, IA 52556",
+            "image": "https://photos.zillowstatic.com/fp/634c69616117766bd5b6ab13b379085f-p_e.jpg"
+        }
+    ],
+    "next": "http://localhost:8000/api/properties?page=2",
+    "prev": null
+}
