@@ -5,6 +5,7 @@ import './App.css';
 import { Home } from './Home';
 import { NotFound } from './404';
 import Messages from './Messages';
+import Detail from './Detail';
 import { Switch } from 'react-router';
 import HomeLayout from '../components/layouts/HomeLayout';
 
@@ -19,6 +20,7 @@ function App() {
     <Route path="/auth" element={<Auth />} />
     <Route path="/main" excact element={<DashboardLayout />}>
       <Route path="messages" element={<Messages />} />
+      <Route path="detail/:id" element={<Detail />} />
     </Route>
     <Route path="*" element={<NotFound />} />
   </Routes>);
