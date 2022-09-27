@@ -17,6 +17,7 @@ function HomeLayout() {
                         <FaIcons.FaUserCircle />
                     </Link>
                 </div>
+                <Outlet/>
             </IconContext.Provider>
         </>
     )
