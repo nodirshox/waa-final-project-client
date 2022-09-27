@@ -3,7 +3,7 @@ import { Grid } from "@mui/material";
 const CardList = ({children}) => {
 
 const renderChildren = (children) => children.map(child => (
-        <Grid xs={12} sm={6} md={4} padding="15px">
+        <Grid key={child.props.id} item xs={12} sm={6} md={4} padding="15px">
             {child}
         </Grid>
     ));

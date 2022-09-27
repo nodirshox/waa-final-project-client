@@ -13,9 +13,18 @@ function HomeLayout() {
                     <div className="logo">
                         NJAN
                     </div>
-                    <Link to="main" className="account-tab">
-                        <FaIcons.FaUserCircle />
-                    </Link>
+                    <div className='navbar-float-right'>
+            {/* TODO: show login only when user is not logged in, and show logout and user icons otherwise */}
+                        <Link to="logout" className="account-tab">
+                            <FaIcons.FaSignOutAlt />
+                        </Link>
+                        <Link to="main" className="account-tab">
+                            <FaIcons.FaUserCircle />
+                        </Link>
+                        <Link to="login" className="account-tab">
+                            <FaIcons.FaSignInAlt />
+                        </Link>
+                    </div>
                 </div>
                 <Outlet/>
             </IconContext.Provider>

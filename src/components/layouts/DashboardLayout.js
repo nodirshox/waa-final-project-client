@@ -1,10 +1,10 @@
 import React, { useState } from 'react'
 import { Link, Outlet } from 'react-router-dom'
-import * as FaIcons from 'react-icons/fa'
 import * as AiIcons from 'react-icons/ai'
 import { SidebarData } from './sidebarData'
 import { IconContext } from 'react-icons'
 import './dashboardLayout.css'
+import Navbar from '../navbar/Navbar'
 
 
 function DashboardLayout() {
@@ -13,14 +13,7 @@ function DashboardLayout() {
     return (
         <>
             <IconContext.Provider value={{ color: '#fff' }}>
-                <div className="navbar">
-                    <Link to="#" className="menu-bars">
-                        <FaIcons.FaBars onClick={showSidebar} />
-                    </Link>
-                    <Link to="#" className="account-tab">
-                        <FaIcons.FaUserCircle />
-                    </Link>
-                </div>
+                <Navbar showSidebar={showSidebar}/>
                 <nav className={sidebar ? 'nav-menu active' : 'nav-menu'}>
                     <ul className="nav-menu-items" onClick={showSidebar}>
                         <li className="navbar-toggle">
