@@ -11,12 +11,12 @@ export function Home() {
             </div>
             <Container>
                 <CardList>
-                    <PropertyCard {...exampleProps}/>
-                    <PropertyCard {...exampleProps}/>
-                    <PropertyCard {...exampleProps}/>
-                    <PropertyCard {...exampleProps}/>
-                    <PropertyCard {...exampleProps}/>
-                    <PropertyCard {...exampleProps}/>
+                    <PropertyCard {...{...exampleProps, id: 1}}/>
+                    <PropertyCard {...{...exampleProps, id: 2}}/>
+                    <PropertyCard {...{...exampleProps, id: 3}}/>
+                    <PropertyCard {...{...exampleProps, id: 4}}/>
+                    <PropertyCard {...{...exampleProps, id: 5}}/>
+                    <PropertyCard {...{...exampleProps, id: 6}}/>
                 </CardList>
             </Container>
                 

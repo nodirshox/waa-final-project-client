@@ -2,13 +2,17 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './pages/App';
 import { BrowserRouter } from 'react-router-dom';
+import keycloak from './Keycloak';
+import { ReactKeycloakProvider } from '@react-keycloak/web';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <React.StrictMode>
-    <BrowserRouter>
-      <App />
-    </BrowserRouter>
-  </React.StrictMode>
+  <ReactKeycloakProvider authClient={keycloak} initOptions={{ onLoad: "login-required", promiseType: "native" }}>
+    <React.StrictMode>
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
+    </React.StrictMode>
+  </ReactKeycloakProvider>
 );
 
