@@ -6,7 +6,6 @@ import { Home } from './Home';
 import { NotFound } from './404';
 import Messages from './Messages';
 import Detail from './Detail';
-import { Switch } from 'react-router';
 import HomeLayout from '../components/layouts/HomeLayout';
 
 
