@@ -14,15 +14,7 @@ import { useKeycloak } from "@react-keycloak/web";
 
 function App() {
   const { keycloak, initialized } = useKeycloak();
-  keycloak.init({
-    onLoad: 'login-required',
-    promiseType: 'native'
-  }).then(auth => {
-    if (auth) {
-      console.log("token", keycloak.token);
-    }
-  });
-  console.log(initialized)
+
   return (
     <Routes>
       <Route path="/" element={<HomeLayout />} >
