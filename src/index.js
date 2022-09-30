@@ -7,7 +7,7 @@ import { ReactKeycloakProvider } from '@react-keycloak/web';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <ReactKeycloakProvider authClient={keycloak} initOptions={{ onLoad: "login-required", promiseType: "native" }}>
+  <ReactKeycloakProvider authClient={keycloak} initOptions={{ onLoad: "sso", promiseType: "native" }}>
     <BrowserRouter>
       <App />
     </BrowserRouter>
