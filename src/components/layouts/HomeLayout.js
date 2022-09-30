@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import { Link, Outlet, useNavigate } from 'react-router-dom'
+import { Outlet, useNavigate } from 'react-router-dom'
 import * as FaIcons from 'react-icons/fa'
 import { IconContext } from 'react-icons'
 import './dashboardLayout.css'
@@ -35,6 +35,7 @@ function HomeLayout() {
     const handleClose = () => setAnchorEl(null);
     const logoutHandler = () => keycloak.logout();
     const dashboardHandler = () => navigate('/main');
+    const loginHanlder = () => keycloak.login();
 
     return (
         <>
@@ -97,7 +98,7 @@ function HomeLayout() {
                                     anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
                                 >
                                     <MenuItem onClick={dashboardHandler}>
-                                        <Avatar /> Main
+                                        <Avatar /> Main ({user.given_name})
                                     </MenuItem>
                                     <MenuItem onClick={logoutHandler}>
                                         <ListItemIcon>
@@ -108,7 +109,7 @@ function HomeLayout() {
                                 </Menu>
                             </React.Fragment>
                         }
-                        {!keycloak.authenticated && <Link to="auth" className="account-tab"> <FaIcons.FaSignInAlt /> </Link>}
+                        {!keycloak.authenticated && <span className="account-tab sign-in" onClick={loginHanlder}>Sign In <FaIcons.FaSignInAlt /></span>/*<Link to="auth" className="account-tab"> Sign In <FaIcons.FaSignInAlt /> </Link>*/}
                     </div>
                 </div>
                 <Outlet />
