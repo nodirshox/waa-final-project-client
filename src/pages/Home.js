@@ -5,6 +5,7 @@ import CardList from "../components/card/CardList";
 import PropertyCard from "../components/card/PropertyCard";
 import { exampleProps } from "../components/card/PropertyCard";
 import { Link } from "react-router-dom";
+import { CONFIG } from "../core/config";
 
 export function Home() {
     const [properties, setProperties] = useState([]);
@@ -24,14 +25,14 @@ export function Home() {
                 <CardList>
                     {
                         properties.map((property) => {
-                            let thumbnail = "https://waa-project.s3.amazonaws.com/1664544328537-no-img-placeholder.png";
+                            let thumbnail = CONFIG.DEFAULT_IMAGE;
                             let thumbnails = property.pictures.filter((img) => img.type === "MAIN");
                             if (thumbnails.length > 0) {
                                 thumbnail = thumbnails[0].awsUrl;
                             }
                             return (
-                                <Link to={`/properties/${property.id}`} style={{ textDecoration: 'none' }} >
-                                    <PropertyCard {...{
+                                <Link key={property.id} to={`/properties/${property.id}`} style={{ textDecoration: 'none' }} >
+                                    <PropertyCard key={property.id} {...{
                                         ...exampleProps,
                                         id: property.id,
                                         price: property.price,
@@ -47,7 +48,6 @@ export function Home() {
                     }
                 </CardList>
             </Container>
-
         </div>
     );
 }

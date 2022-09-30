@@ -7,6 +7,7 @@ import { useKeycloak } from '@react-keycloak/web';
 import { getProfile } from '../../core/profile'
 import Box from '@mui/material/Box';
 import Avatar from '@mui/material/Avatar';
+import PersonAdd from '@mui/icons-material/PersonAdd';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import ListItemIcon from '@mui/material/ListItemIcon';
@@ -36,6 +37,12 @@ function HomeLayout() {
     const logoutHandler = () => keycloak.logout();
     const dashboardHandler = () => navigate('/main');
     const loginHanlder = () => keycloak.login();
+
+    const hasRole = (keycloak) => {
+        return keycloak.hasRealmRole("admin") || keycloak.hasRealmRole("owner") || keycloak.hasRealmRole("customer");
+    }
+
+    const selectRoleHandler = () => navigate("/role");
 
     return (
         <>
@@ -102,6 +109,9 @@ function HomeLayout() {
                                     <MenuItem onClick={dashboardHandler}>
                                         <Avatar /> Main ({user.given_name})
                                     </MenuItem>
+                                    {
+                                        hasRole(keycloak) === true ? <></> : <><MenuItem onClick={selectRoleHandler}><PersonAdd fontSize="small" /> Select role</MenuItem></>
+                                    }
                                     <MenuItem onClick={logoutHandler}>
                                         <ListItemIcon>
                                             <Logout fontSize="small" />
