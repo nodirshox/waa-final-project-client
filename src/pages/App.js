@@ -11,6 +11,7 @@ import Properties from './Properties';
 import Users from './Users';
 import SelectRole from './SelectRole';
 import CreateProperty from "./owner/CreateProperty";
+import UpdateImageProperty from './owner/UpdateImageProperty';
 
 function App() {
 
@@ -22,6 +23,7 @@ function App() {
       </Route>
       <Route path="/owner" exact element={<HomeLayout />} >
         <Route path="create" element={<CreateProperty />} />
+        <Route path="images/:id" element={<UpdateImageProperty />} />
       </Route>
       <Route path="/properties" exact element={<HomeLayout />} >
         <Route path=":id" element={<Detail />} />

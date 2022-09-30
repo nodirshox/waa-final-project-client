@@ -3,8 +3,11 @@ import TextField from '@mui/material/TextField';
 import MenuItem from '@mui/material/MenuItem';
 import * as React from 'react';
 import Button from '@mui/material/Button';
+import { AxiosClient } from '../../axios';
+import { useNavigate } from 'react-router-dom';
 
 export default function CreateProperty() {
+  const navigate = useNavigate();
   const [type, setType] = React.useState('HOUSE');
   const [listingType, setListingType] = React.useState('RENT');
   const [state, setState] = React.useState('');
@@ -47,8 +50,20 @@ export default function CreateProperty() {
     setListingType(event.target.value);
   };
 
-  const createHandler = () => {
-    console.log(state);
+  const createHandler = async () => {
+    const response = await AxiosClient.post("/properties", {
+      price,
+      numberOfRooms,
+      listingType,
+      type,
+      address: {
+        state,
+        city,
+        zip,
+        street
+      }
+    })
+    navigate(`/owner/images/${response.data.id}`);
   }
 
   return (

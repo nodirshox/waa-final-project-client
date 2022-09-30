@@ -35,3 +35,10 @@
   align-items: center;
   justify-content: center;
 }
+.upload-image {
+  display: flex;
+  height: 20vh;
+  margin-left: 30px;
+  align-items: center;
+  justify-content: center;
+}
