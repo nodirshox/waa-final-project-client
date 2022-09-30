@@ -11,9 +11,8 @@ import Properties from './Properties';
 import Users from './Users';
 import { useKeycloak } from "@react-keycloak/web";
 
-
 function App() {
-  const { keycloak, initialized } = useKeycloak();
+  // const { keycloak, initialized } = useKeycloak();
 
   return (
     <Routes>

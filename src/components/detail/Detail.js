@@ -1,6 +1,6 @@
 import "./detail.css";
 
-export const Detail = ({ price, address, type, numberOfRooms, listingType, createdAt }) => {
+export const Detail = ({ price, address, type, numberOfRooms, listingType, createdAt, thumbnail }) => {
   const date = new Date(createdAt);
   const month = date.toLocaleString('default', { month: 'long' });
   return (
@@ -30,7 +30,7 @@ export const Detail = ({ price, address, type, numberOfRooms, listingType, creat
         {month} {date.getDay()}, {date.getFullYear()}
       </p>
       <p>
-        <img src="https://photos.zillowstatic.com/fp/a382f363a22f1b54f0abe5d8c4a53320-cc_ft_1536.webp" alt="House" />
+        <img src={thumbnail} alt="House" height="250px" width="auto" />
       </p>
     </div>
   )
