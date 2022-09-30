@@ -21,3 +21,24 @@
 .container {
   padding: 15px;
 }
+.selectRole {
+  display: flex;
+  height: 90vh;
+  margin-left: 30px;
+  align-items: center;
+  justify-content: center;
+}
+.create-property {
+  display: flex;
+  height: 90vh;
+  margin-left: 30px;
+  align-items: center;
+  justify-content: center;
+}
+.upload-image {
+  display: flex;
+  height: 20vh;
+  margin-left: 30px;
+  align-items: center;
+  justify-content: center;
+}
