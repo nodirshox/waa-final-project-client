@@ -14,7 +14,7 @@ import ListItemIcon from '@mui/material/ListItemIcon';
 import IconButton from '@mui/material/IconButton';
 import Tooltip from '@mui/material/Tooltip';
 import Logout from '@mui/icons-material/Logout';
-
+import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
 
 function InitailLatters(name) {
     if (name) {
@@ -35,13 +35,17 @@ function HomeLayout() {
     const handleClick = (event) => setAnchorEl(event.currentTarget);
     const handleClose = () => setAnchorEl(null);
     const logoutHandler = () => keycloak.logout();
-    const dashboardHandler = () => navigate('/main');
     const loginHanlder = () => keycloak.login();
 
     const hasRole = (keycloak) => {
         return keycloak.hasRealmRole("admin") || keycloak.hasRealmRole("owner") || keycloak.hasRealmRole("customer");
     }
 
+    const isOwner = (keycloak) => {
+        return keycloak.hasRealmRole("owner");
+    }
+
+    const createPropertyHandler = () => navigate("/owner/create");
     const selectRoleHandler = () => navigate("/role");
 
     return (
@@ -106,11 +110,14 @@ function HomeLayout() {
                                     transformOrigin={{ horizontal: 'right', vertical: 'top' }}
                                     anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
                                 >
-                                    <MenuItem onClick={dashboardHandler}>
-                                        <Avatar /> Main ({user.given_name})
+                                    <MenuItem>
+                                        <Avatar /> {user.given_name}
                                     </MenuItem>
                                     {
                                         hasRole(keycloak) === true ? <></> : <><MenuItem onClick={selectRoleHandler}><PersonAdd fontSize="small" /> Select role</MenuItem></>
+                                    }
+                                    {
+                                        isOwner(keycloak) === true ? <><MenuItem onClick={createPropertyHandler}><AddCircleOutlineIcon /> Create property</MenuItem></> : <></>
                                     }
                                     <MenuItem onClick={logoutHandler}>
                                         <ListItemIcon>
@@ -121,7 +128,7 @@ function HomeLayout() {
                                 </Menu>
                             </React.Fragment>
                         }
-                        {!keycloak.authenticated && <span className="account-tab sign-in" onClick={loginHanlder}>Sign In <FaIcons.FaSignInAlt /></span>/*<Link to="auth" className="account-tab"> Sign In <FaIcons.FaSignInAlt /> </Link>*/}
+                        {!keycloak.authenticated && <span className="account-tab sign-in" onClick={loginHanlder}>Sign In <FaIcons.FaSignInAlt /></span>}
                     </div>
                 </div>
                 <Outlet />
