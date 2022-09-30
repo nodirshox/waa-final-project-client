@@ -8,11 +8,9 @@ import { ReactKeycloakProvider } from '@react-keycloak/web';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <ReactKeycloakProvider authClient={keycloak} initOptions={{ onLoad: "login-required", promiseType: "native" }}>
-    <React.StrictMode>
-      <BrowserRouter>
-        <App />
-      </BrowserRouter>
-    </React.StrictMode>
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
   </ReactKeycloakProvider>
 );
 

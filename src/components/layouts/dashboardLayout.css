@@ -23,13 +23,16 @@
   font-size: 1.5rem;
   vertical-align: middle;
   background: none;
+  text-decoration: none;
+  color: #fff;
 }
 .account-tab span {
   margin-left: 0.5rem;
   color: white;
+  vertical-align: middle;
 }
-.account-tab:hover {
-  background-color: #252831;
+.account-tab svg {
+  vertical-align: middle;
 }
 
 .nav-menu {

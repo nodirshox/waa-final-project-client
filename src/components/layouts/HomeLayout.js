@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Link, Outlet } from 'react-router-dom'
 import * as FaIcons from 'react-icons/fa'
 import { IconContext } from 'react-icons'
@@ -6,6 +6,7 @@ import './dashboardLayout.css'
 
 
 function HomeLayout() {
+    const [loggedin, setSidebar] = useState(false)
     return (
         <>
             <IconContext.Provider value={{ color: '#fff' }}>
@@ -14,7 +15,7 @@ function HomeLayout() {
                         NJAN
                     </div>
                     <div className='navbar-float-right'>
-            {/* TODO: show login only when user is not logged in, and show logout and user icons otherwise */}
+                        {/* TODO: show login only when user is not logged in, and show logout and user icons otherwise */}
                         <Link to="logout" className="account-tab">
                             <FaIcons.FaSignOutAlt />
                         </Link>
@@ -26,7 +27,7 @@ function HomeLayout() {
                         </Link>
                     </div>
                 </div>
-                <Outlet/>
+                <Outlet />
             </IconContext.Provider>
         </>
     )

@@ -1,25 +1,21 @@
 import React from 'react';
 import * as FaIcons from 'react-icons/fa';
-import * as IoIcons from 'react-icons/io';
-import * as AiIcons from 'react-icons/ai';
+import MapsHomeWorkIcon from '@mui/icons-material/MapsHomeWork';
+import SupportAgentIcon from '@mui/icons-material/SupportAgent';
+import GroupIcon from '@mui/icons-material/Group';
+import HomeIcon from '@mui/icons-material/Home';
 
 export const SidebarData = [
     {
         title: 'Home',
         path: '/',
-        icon: <AiIcons.AiFillHome />,
+        icon: <HomeIcon />,
         cName: 'nav-text'
     },
     {
-        title: 'Reports',
-        path: '/reports',
-        icon: <IoIcons.IoIosPaper />,
-        cName: 'nav-text'
-    },
-    {
-        title: 'Products',
-        path: '/products',
-        icon: <FaIcons.FaCartPlus />,
+        title: 'Properties',
+        path: '/main/properties',
+        icon: <MapsHomeWorkIcon />,
         cName: 'nav-text'
     },
     {
@@ -29,9 +25,15 @@ export const SidebarData = [
         cName: 'nav-text'
     },
     {
+        title: 'Users',
+        path: '/main/users',
+        icon: <GroupIcon />,
+        cName: 'nav-text'
+    },
+    {
         title: 'Support',
-        path: '/support',
-        icon: <IoIcons.IoMdHelpCircle />,
+        path: '/main/support',
+        icon: <SupportAgentIcon />,
         cName: 'nav-text'
     }
 ]

@@ -1,6 +1,7 @@
 import { Detail as DetailComponent } from '../components/detail/Detail';
 
 function Detail() {
+  console.log('Detail');
   const address = {
     "state": "IA",
     "city": "Fairfield",
