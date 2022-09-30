@@ -6,8 +6,8 @@ const PropertyCard = ({ id, image, price, type, listingType, numberOfRooms, addr
       <CardActionArea>
         <CardMedia
           component="img"
-          //   height='100%'
-          width='100%'
+          height='250px'
+          width='250px'
           image={image}
           alt="house photo"
         />
