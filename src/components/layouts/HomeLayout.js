@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import { Outlet, useNavigate } from 'react-router-dom'
+import { Outlet, useNavigate, Link } from 'react-router-dom'
 import * as FaIcons from 'react-icons/fa'
 import { IconContext } from 'react-icons'
 import './dashboardLayout.css'
@@ -41,9 +41,11 @@ function HomeLayout() {
         <>
             <IconContext.Provider value={{ color: '#fff' }}>
                 <div className="navbar">
-                    <div className="logo">
-                        NJAN
-                    </div>
+                    <Link to="/" style={{ textDecoration: 'none' }}>
+                        <div className="logo">
+                            NJAN
+                        </div>
+                    </Link>
                     <div className='navbar-float-right'>
                         {
                             keycloak.authenticated &&

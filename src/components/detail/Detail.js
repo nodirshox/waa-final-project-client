@@ -1,10 +1,14 @@
 import "./detail.css";
 
-export const Detail = ({ price, address, type, numberOfRooms, createdAt }) => {
+export const Detail = ({ price, address, type, numberOfRooms, listingType, createdAt }) => {
   const date = new Date(createdAt);
   const month = date.toLocaleString('default', { month: 'long' });
   return (
     <div className="detail">
+      <p>
+        <b>Listing: </b>
+        {listingType}
+      </p>
       <p>
         <b>Price: </b>
         ${price}
