@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react'
-import { Link, Outlet } from 'react-router-dom'
+import React, { useEffect } from 'react'
+import { Link, Outlet, useNavigate } from 'react-router-dom'
 import * as FaIcons from 'react-icons/fa'
 import { IconContext } from 'react-icons'
 import './dashboardLayout.css'
@@ -16,33 +16,26 @@ import Logout from '@mui/icons-material/Logout';
 
 
 function InitailLatters(name) {
-    console.log(name)
-    var initials = name.match(/\b\w/g) || [];
-    initials = ((initials.shift() || '') + (initials.pop() || '')).toUpperCase();
-    console.log(initials)
-    return initials;
+    if (name) {
+        var initials = name.match(/\b\w/g) || [];
+        initials = ((initials.shift() || '') + (initials.pop() || '')).toUpperCase();
+        return initials;
+    } else return name
 }
 
 function HomeLayout() {
-    const { keycloak, initialized } = useKeycloak();
-    localStorage.setItem('token', keycloak.token);
-    let user = "";
-    useEffect(() => { getProfile().then((res) => { user = res.given_name }) }, [])
-
-    const [sidebar, setSidebar] = useState(false)
-    const showSidebar = () => setSidebar(!sidebar)
+    const navigate = useNavigate();
+    const { keycloak } = useKeycloak();
+    const [user, setUser] = React.useState({})
+    useEffect(() => { getProfile(keycloak.token).then((res) => setUser(res)) }, [keycloak.token])
     const [anchorEl, setAnchorEl] = React.useState(null);
-    const open = Boolean(anchorEl);
-    const handleClick = (event) => {
-        setAnchorEl(event.currentTarget);
-    };
-    const handleClose = () => {
-        setAnchorEl(null);
-    };
 
-    const logoutHandler = () => {
-        keycloak.logout();
-    }
+    const open = Boolean(anchorEl);
+    const handleClick = (event) => setAnchorEl(event.currentTarget);
+    const handleClose = () => setAnchorEl(null);
+    const logoutHandler = () => keycloak.logout();
+    const dashboardHandler = () => navigate('/main');
+
     return (
         <>
             <IconContext.Provider value={{ color: '#fff' }}>
@@ -64,7 +57,7 @@ function HomeLayout() {
                                             aria-haspopup="true"
                                             aria-expanded={open ? 'true' : undefined}
                                         >
-                                            <Avatar sx={{ width: 32, height: 32 }}>{InitailLatters(user)}</Avatar>
+                                            <Avatar sx={{ width: 32, height: 32 }}>{InitailLatters(user.given_name)}</Avatar>
                                         </IconButton>
                                     </Tooltip>
                                 </Box>
@@ -103,7 +96,7 @@ function HomeLayout() {
                                     transformOrigin={{ horizontal: 'right', vertical: 'top' }}
                                     anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
                                 >
-                                    <MenuItem>
+                                    <MenuItem onClick={dashboardHandler}>
                                         <Avatar /> Main
                                     </MenuItem>
                                     <MenuItem onClick={logoutHandler}>
