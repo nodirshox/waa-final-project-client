@@ -7,6 +7,7 @@ import { useEffect, useState } from "react";
 export const Detail = ({ price, address, type, numberOfRooms, listingType, createdAt, thumbnail, pictures }) => {
   const params = useParams();
   const [isSend, setIsSend] = useState(false);
+  const [isSendApplication, setIsSendApplication] = useState(true);
   const date = new Date(createdAt);
   const month = date.toLocaleString('default', { month: 'long' });
   const userRole = localStorage.getItem("user_role");
@@ -23,6 +24,13 @@ export const Detail = ({ price, address, type, numberOfRooms, listingType, creat
       email: localStorage.getItem("email")
     })
     setIsSend(false);
+  }
+
+  const sendApplication = async () => {
+    await AxiosClient.post(`/properties/${params.id}/applications`, {
+      email: localStorage.getItem("email")
+    })
+    setIsSendApplication(false);
   }
 
   const fetchFavourites = async () => {
@@ -73,6 +81,7 @@ export const Detail = ({ price, address, type, numberOfRooms, listingType, creat
       <p>
         {userRole === "customer" ? isSend === false ? <Button variant="contained" onClick={addToFavourites}>Add to favourites</Button> : <Button variant="contained" onClick={removeFromFavourites}>Remove from favourites</Button> : <></>}
       </p>
+      <p>{userRole === "customer" && isSendApplication ? <Button variant="contained" onClick={sendApplication}>Send Application</Button> : <></>}</p>
       <p>
         <img src={thumbnail} alt="House" className="center" height="350px" width="auto" />
       </p>
