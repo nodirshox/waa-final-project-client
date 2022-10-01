@@ -1,6 +1,6 @@
+import * as React from 'react';
 import Button from '@mui/material/Button';
 import { AxiosClient } from '../../axios';
-import * as React from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 
 export default function UpdateImageProperty() {
@@ -20,7 +20,7 @@ export default function UpdateImageProperty() {
       headers: { "Content-Type": "multipart/form-data" },
     });
 
-    const updateImage = await AxiosClient.patch(`/properties/${params.id}/images`, [
+    await AxiosClient.patch(`/properties/${params.id}/images`, [
       {
         awsUrl: response.data.awsUrl,
         type: "MAIN"

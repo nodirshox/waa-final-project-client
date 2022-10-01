@@ -12,7 +12,7 @@ export default function SelectRole() {
   const { keycloak } = useKeycloak();
   const nav = useNavigate();
   const role = async (role) => {
-    const response = await AxiosClient.post("/users", {
+    await AxiosClient.post("/users", {
       name: user.given_name,
       type: role,
       email: user.email
