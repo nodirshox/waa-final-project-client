@@ -19,11 +19,10 @@ export const Detail = ({ price, address, type, numberOfRooms, listingType, creat
   }
 
   const removeFromFavourites = async () => {
-    const response = await AxiosClient.post(`/favourites/property/${params.id}/remove`, {
+    await AxiosClient.post(`/favourites/property/${params.id}/remove`, {
       email: localStorage.getItem("email")
     })
     setIsSend(false);
-    console.log(response);
   }
 
   const fetchFavourites = async () => {

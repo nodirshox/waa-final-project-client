@@ -15,6 +15,7 @@ import IconButton from '@mui/material/IconButton';
 import Tooltip from '@mui/material/Tooltip';
 import Logout from '@mui/icons-material/Logout';
 import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
+import FavoriteIcon from '@mui/icons-material/Favorite';
 
 function InitailLatters(name) {
     if (name) {
@@ -55,7 +56,12 @@ function HomeLayout() {
         return keycloak.hasRealmRole("owner");
     }
 
+    const isCustomer = (keycloak) => {
+        return keycloak.hasRealmRole("customer");
+    }
+
     const createPropertyHandler = () => navigate("/owner/create");
+    const favouriteListHandler = () => navigate("/properties/favourites");
     const selectRoleHandler = () => navigate("/role");
 
     return (
@@ -128,6 +134,9 @@ function HomeLayout() {
                                     }
                                     {
                                         isOwner(keycloak) === true ? <><MenuItem onClick={createPropertyHandler}><AddCircleOutlineIcon /> Create property</MenuItem></> : <></>
+                                    }
+                                    {
+                                        isCustomer(keycloak) === true ? <><MenuItem onClick={favouriteListHandler}><FavoriteIcon /> Favourites</MenuItem></> : <></>
                                     }
                                     <MenuItem onClick={logoutHandler}>
                                         <ListItemIcon>

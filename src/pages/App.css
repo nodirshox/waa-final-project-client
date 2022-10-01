@@ -48,3 +48,14 @@
   margin-right: auto;
   width: 50%;
 }
+.favourites {
+  display: flex;
+  height: 90vh;
+  margin-left: 30px;
+}
+.favourites-header {
+  display: flex;
+  height: 10vh;
+  margin-left: 30px;
+  margin-top: 15px;
+}
