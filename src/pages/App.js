@@ -12,6 +12,8 @@ import Users from './Users';
 import SelectRole from './SelectRole';
 import CreateProperty from "./owner/CreateProperty";
 import UpdateImageProperty from './owner/UpdateImageProperty';
+import Favourites from "./customer/Favourites";
+
 //import { useKeycloak } from '@react-keycloak/web';
 
 function App() {
@@ -29,6 +31,7 @@ function App() {
       </Route>
       <Route path="/properties" exact element={<HomeLayout />} >
         <Route path=":id" element={<Detail />} />
+        <Route path="favourites" element={<Favourites />} />
       </Route>
       <Route path="/auth" element={<Auth />} />
       <Route path="/main" excact element={<DashboardLayout />}>
