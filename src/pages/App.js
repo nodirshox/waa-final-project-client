@@ -13,6 +13,8 @@ import SelectRole from './SelectRole';
 import CreateProperty from "./owner/CreateProperty";
 import UpdateImageProperty from './owner/UpdateImageProperty';
 import Favourites from "./customer/Favourites";
+import Rented from "./admin/Rented";
+import Customers from "./admin/Customers";
 
 //import { useKeycloak } from '@react-keycloak/web';
 
@@ -28,6 +30,10 @@ function App() {
       <Route path="/owner" exact element={<HomeLayout />} >
         <Route path="create" element={<CreateProperty />} />
         <Route path="images/:id" element={<UpdateImageProperty />} />
+      </Route>
+      <Route path="/admin" exact element={<HomeLayout />} >
+        <Route path="rented" element={<Rented />} />
+        <Route path="customers" element={<Customers />} />
       </Route>
       <Route path="/properties" exact element={<HomeLayout />} >
         <Route path=":id" element={<Detail />} />

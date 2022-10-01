@@ -16,6 +16,8 @@ import Tooltip from '@mui/material/Tooltip';
 import Logout from '@mui/icons-material/Logout';
 import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
 import FavoriteIcon from '@mui/icons-material/Favorite';
+import HouseIcon from '@mui/icons-material/House';
+import RecentActorsIcon from '@mui/icons-material/RecentActors';
 
 function InitailLatters(name) {
     if (name) {
@@ -52,6 +54,10 @@ function HomeLayout() {
         return keycloak.hasRealmRole("admin") || keycloak.hasRealmRole("owner") || keycloak.hasRealmRole("customer");
     }
 
+    const isAdmin = (keycloak) => {
+        return keycloak.hasRealmRole("admin");
+    }
+
     const isOwner = (keycloak) => {
         return keycloak.hasRealmRole("owner");
     }
@@ -63,6 +69,8 @@ function HomeLayout() {
     const createPropertyHandler = () => navigate("/owner/create");
     const favouriteListHandler = () => navigate("/properties/favourites");
     const selectRoleHandler = () => navigate("/role");
+    const latestRented = () => navigate("/admin/rented");
+    const latestCustomers = () => navigate("/admin/customers");
 
     return (
         <>
@@ -137,6 +145,12 @@ function HomeLayout() {
                                     }
                                     {
                                         isCustomer(keycloak) === true ? <><MenuItem onClick={favouriteListHandler}><FavoriteIcon /> Favourites</MenuItem></> : <></>
+                                    }
+                                    {
+                                        isAdmin(keycloak) === true ? <><MenuItem onClick={latestRented}><HouseIcon /> Latest Rented</MenuItem></> : <></>
+                                    }
+                                    {
+                                        isAdmin(keycloak) === true ? <><MenuItem onClick={latestCustomers}><RecentActorsIcon /> Latest Customers</MenuItem></> : <></>
                                     }
                                     <MenuItem onClick={logoutHandler}>
                                         <ListItemIcon>

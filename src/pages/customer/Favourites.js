@@ -9,7 +9,6 @@ import RemoveCircleIcon from '@mui/icons-material/RemoveCircle';
 export default function Favourites() {
   const [list, setList] = React.useState([]);
   const deleteHandler = async (id) => {
-    console.log(id);
     await AxiosClient.post(`/favourites/property/${id}/remove`, {
       email: localStorage.getItem("email")
     })
