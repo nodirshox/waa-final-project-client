@@ -7,6 +7,7 @@ import { CONFIG } from "../core/config";
 function Detail() {
   const [property, setProperty] = useState({});
   const [thumbnail, setThumbnail] = useState(CONFIG.DEFAULT_IMAGE);
+  const [pictures, setPictures] = useState([]);
   const params = useParams();
 
   const fetchProperty = async () => {
@@ -17,6 +18,8 @@ function Detail() {
     if (thumbnails.length > 0) {
       setThumbnail(thumbnails[0].awsUrl);
     }
+
+    setPictures(result.data.pictures.filter((img) => img.type === "NORMAL"));
   }
 
   useEffect(() => {
@@ -35,6 +38,7 @@ function Detail() {
         listingType={property.listingType}
         createdAt={property.createdAt}
         thumbnail={thumbnail}
+        pictures={pictures}
       />
     </div>
   );

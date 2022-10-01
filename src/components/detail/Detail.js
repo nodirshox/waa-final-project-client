@@ -1,6 +1,6 @@
 import "./detail.css";
 
-export const Detail = ({ price, address, type, numberOfRooms, listingType, createdAt, thumbnail }) => {
+export const Detail = ({ price, address, type, numberOfRooms, listingType, createdAt, thumbnail, pictures }) => {
   const date = new Date(createdAt);
   const month = date.toLocaleString('default', { month: 'long' });
   return (
@@ -30,7 +30,16 @@ export const Detail = ({ price, address, type, numberOfRooms, listingType, creat
         {month} {date.getDay()}, {date.getFullYear()}
       </p>
       <p>
-        <img src={thumbnail} alt="House" height="250px" width="auto" />
+        <img src={thumbnail} alt="House" className="center" height="350px" width="auto" />
+      </p>
+      <p>
+        {
+          pictures.map((pic) => {
+            return (
+              <img src={pic.awsUrl} alt="House" height="180px" width="auto" style={{ margin: "5px" }} />
+            )
+          })
+        }
       </p>
     </div>
   )
