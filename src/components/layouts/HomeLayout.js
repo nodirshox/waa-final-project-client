@@ -18,6 +18,7 @@ import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import HouseIcon from '@mui/icons-material/House';
 import RecentActorsIcon from '@mui/icons-material/RecentActors';
+import DraftsIcon from '@mui/icons-material/Drafts';
 
 function InitailLatters(name) {
     if (name) {
@@ -67,6 +68,8 @@ function HomeLayout() {
     }
 
     const createPropertyHandler = () => navigate("/owner/create");
+    const applications = () => navigate("/owner/applications");
+    const ownerProperties = () => navigate("/owner/properties");
     const favouriteListHandler = () => navigate("/properties/favourites");
     const selectRoleHandler = () => navigate("/role");
     const latestRented = () => navigate("/admin/rented");
@@ -144,6 +147,12 @@ function HomeLayout() {
                                         isOwner(keycloak) === true ? <><MenuItem onClick={createPropertyHandler}><AddCircleOutlineIcon /> Create property</MenuItem></> : <></>
                                     }
                                     {
+                                        isOwner(keycloak) === true ? <><MenuItem onClick={applications}><DraftsIcon /> Applications</MenuItem></> : <></>
+                                    }
+                                    {
+                                        isOwner(keycloak) === true ? <><MenuItem onClick={ownerProperties}><HouseIcon /> Properties</MenuItem></> : <></>
+                                    }
+                                    {
                                         isCustomer(keycloak) === true ? <><MenuItem onClick={favouriteListHandler}><FavoriteIcon /> Favourites</MenuItem></> : <></>
                                     }
                                     {
@@ -161,7 +170,7 @@ function HomeLayout() {
                                 </Menu>
                             </React.Fragment>
                         }
-                        {!keycloak.authenticated && <span className="account-tab sign-in" onClick={loginHanlder}>Sign In <FaIcons.FaSignInAlt /></span>}
+                        {!keycloak.authenticated && <span className="account-tab sign-in" onClick={loginHanlder}><FaIcons.FaSignInAlt /></span>}
                     </div>
                 </div>
                 <Outlet />

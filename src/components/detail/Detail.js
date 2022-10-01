@@ -27,7 +27,7 @@ export const Detail = ({ price, address, type, numberOfRooms, listingType, creat
   }
 
   const sendApplication = async () => {
-    await AxiosClient.post(`/properties/${params.id}/applications`, {
+    await AxiosClient.post(`/properties/applications/${params.id}`, {
       email: localStorage.getItem("email")
     })
     setIsSendApplication(false);

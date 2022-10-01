@@ -15,11 +15,10 @@ import UpdateImageProperty from './owner/UpdateImageProperty';
 import Favourites from "./customer/Favourites";
 import Rented from "./admin/Rented";
 import Customers from "./admin/Customers";
-
-//import { useKeycloak } from '@react-keycloak/web';
+import Applications from './owner/Applications';
+import OwnerProperties from './owner/Properties';
 
 function App() {
-  //const { keycloak } = useKeycloak();
 
   return (
     <Routes>
@@ -30,6 +29,8 @@ function App() {
       <Route path="/owner" exact element={<HomeLayout />} >
         <Route path="create" element={<CreateProperty />} />
         <Route path="images/:id" element={<UpdateImageProperty />} />
+        <Route path="applications" element={<Applications />} />
+        <Route path="properties" element={<OwnerProperties />} />
       </Route>
       <Route path="/admin" exact element={<HomeLayout />} >
         <Route path="rented" element={<Rented />} />
