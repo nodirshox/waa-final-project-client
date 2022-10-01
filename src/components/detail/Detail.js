@@ -1,8 +1,47 @@
+import { Button } from "@mui/material";
 import "./detail.css";
+import { AxiosClient } from "../../axios";
+import { useParams } from "react-router-dom";
+import { useEffect, useState } from "react";
 
 export const Detail = ({ price, address, type, numberOfRooms, listingType, createdAt, thumbnail, pictures }) => {
+  const params = useParams();
+  const [isSend, setIsSend] = useState(false);
   const date = new Date(createdAt);
   const month = date.toLocaleString('default', { month: 'long' });
+  const userRole = localStorage.getItem("user_role");
+
+  const addToFavourites = async () => {
+    await AxiosClient.post(`/favourites/property/${params.id}`, {
+      email: localStorage.getItem("email")
+    })
+    setIsSend(true);
+  }
+
+  const removeFromFavourites = async () => {
+    const response = await AxiosClient.post(`/favourites/property/${params.id}/remove`, {
+      email: localStorage.getItem("email")
+    })
+    setIsSend(false);
+    console.log(response);
+  }
+
+  const fetchFavourites = async () => {
+    const response = await AxiosClient.get("favourites", {
+      params: {
+        email: localStorage.getItem("email")
+      }
+    })
+    let found = response.data.filter((e) => e.id === Number.parseInt(params.id));
+
+    if (found.length > 0) {
+      setIsSend(true);
+    }
+  }
+  useEffect(() => {
+    fetchFavourites();
+  }, []);
+
   return (
     <div className="detail">
       <p>
@@ -28,6 +67,12 @@ export const Detail = ({ price, address, type, numberOfRooms, listingType, creat
       <p>
         <b>Listed: </b>
         {month} {date.getDay()}, {date.getFullYear()}
+      </p>
+      <p>
+        <b>Action</b>
+      </p>
+      <p>
+        {userRole === "customer" ? isSend === false ? <Button variant="contained" onClick={addToFavourites}>Add to favourites</Button> : <Button variant="contained" onClick={removeFromFavourites}>Remove from favourites</Button> : <></>}
       </p>
       <p>
         <img src={thumbnail} alt="House" className="center" height="350px" width="auto" />

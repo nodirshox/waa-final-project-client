@@ -12,8 +12,10 @@ import Users from './Users';
 import SelectRole from './SelectRole';
 import CreateProperty from "./owner/CreateProperty";
 import UpdateImageProperty from './owner/UpdateImageProperty';
+//import { useKeycloak } from '@react-keycloak/web';
 
 function App() {
+  //const { keycloak } = useKeycloak();
 
   return (
     <Routes>
