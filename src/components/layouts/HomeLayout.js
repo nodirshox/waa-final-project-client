@@ -38,6 +38,16 @@ function HomeLayout() {
     const loginHanlder = () => keycloak.login();
 
     const hasRole = (keycloak) => {
+        let userRole = "null";
+        if (keycloak.hasRealmRole("admin")) {
+            userRole = "admin";
+        } else if (keycloak.hasRealmRole("owner")) {
+            userRole = "owner";
+        } else if (keycloak.hasRealmRole("customer")) {
+            userRole = "customer";
+        }
+        localStorage.setItem("user_role", userRole);
+
         return keycloak.hasRealmRole("admin") || keycloak.hasRealmRole("owner") || keycloak.hasRealmRole("customer");
     }
 

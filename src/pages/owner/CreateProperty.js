@@ -56,6 +56,7 @@ export default function CreateProperty() {
       numberOfRooms,
       listingType,
       type,
+      ownerEmail: localStorage.getItem("email"),
       address: {
         state,
         city,
