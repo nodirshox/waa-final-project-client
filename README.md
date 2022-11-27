@@ -1,5 +1,7 @@
-# Rental Property Portal Client Side
+# Property Management Portal Client Side
 
-Implement using React JS
+Implemented using React JS
 
 [Backend](https://github.com/nodirshox/waa-final-project)
+
+![Main page](/src/assets/main.jpg "Main page")
